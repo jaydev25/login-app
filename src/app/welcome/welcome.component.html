@@ -1,6 +1,13 @@
 <div scroll="false">
   <div>
-    <h2>Welcome</h2><br>
-    <button mat-raised-button (click)="logout()" class="signup">{{ 'Logout' }}</button>
+    <h2>Welcome {{currentUser.email}}</h2><br>
+    <p>Your password is encrypted as {{currentUser.password}}</p>
+    <button mat-raised-button (click)="logout()" class="signup">{{ 'Logout' }}</button><br>
+    <h3>Below are regestered users</h3>
+    <ul>
+      <li *ngFor="let user of users; let i = index">
+        {{i + 1}} - {{user.email}}
+      </li>
+    </ul>
   </div>
 </div>
