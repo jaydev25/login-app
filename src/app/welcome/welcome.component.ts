@@ -30,12 +30,13 @@ export class WelcomeComponent implements OnInit {
         })
       };
       this.http.get(this.url + 'login/users', httpOptions).subscribe((data) => {
-        this.loading = false;
         if (data['success']) {
           this.users = data['users'];
           this.currentUser = data['currentUser'];
         }
       }, error => {
+        localStorage.removeItem('_token');
+        this.router.navigate(['/signin']);
       });
     }
 
